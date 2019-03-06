@@ -1,0 +1,84 @@
+____
+Amazon Simple Email Service (Amazon SES) is a cloud-based email sending service designed to help digital marketers and application developers send marketing, notification, and transactional emails. It is a reliable, cost-effective service for businesses of all sizes that use email to keep in contact with their customers.
+____
+
+Add a dependency to AWS SES SDK:
+
+[source,java]
+.build.gradle
+----
+include::{sourceDir}/build.gradle[tag=awsses]
+----
+
+Create a service which encapsulates AWS credentials provider. The bean will not be loaded if the
+environment variables (`AWS_ACCESS_KEY_ID`, `AWS_SECRET_KEY`) or system properties ( `aws.accesskeyid`, `aws.secretkey`) are not present.
+
+[source,java]
+.src/main/java/example/micronaut/AwsCredentialsProviderCondition.java
+----
+include::{sourceDir}/src/main/java/example/micronaut/AwsCredentialsProviderCondition.java[]
+----
+
+Add a test:
+
+[source,groovy]
+.src/test/groovy/example/micronaut/AwsCredentialsProviderConditionSpec.groovy
+----
+include::{sourceDir}/src/test/groovy/example/micronaut/AwsCredentialsProviderConditionSpec.groovy[]
+----
+
+[source,java]
+.src/main/java/example/micronaut/AwsCredentialsProviderService.java
+----
+include::{sourceDir}/src/main/java/example/micronaut/AwsCredentialsProviderService.java[]
+----
+
+<1> Use `javax.inject.Singleton` to designate a class a a singleton
+<2> Bean will not loaded unless condition is met.
+<3> Values will be resolved from system properties.
+
+Add a test:
+
+[source,groovy]
+.src/test/groovy/example/micronaut/AwsCredentialsProviderServiceSpec.groovy
+----
+include::{sourceDir}/src/test/groovy/example/micronaut/AwsCredentialsProviderServiceSpec.groovy[]
+----
+
+Create a service which sends the email with AWS Simple Email Service. The bean will not be loaded if the
+environment variables (`AWS_REGION`, `AWS_SOURCE_EMAIL`) or system properties (`aws.region`, `aws.sourceemail`) are not present.
+
+[source,java]
+.src/main/java/example/micronaut/AwsSesMailCondition.java
+----
+include::{sourceDir}/src/main/java/example/micronaut/AwsSesMailCondition.java[]
+----
+
+Add a test:
+
+[source,groovy]
+.src/test/groovy/example/micronaut/AwsSesMailConditionSpec.groovy
+----
+include::{sourceDir}/src/test/groovy/example/micronaut/AwsSesMailConditionSpec.groovy[]
+----
+
+[source,java]
+.src/main/java/example/micronaut/AwsSesMailService.java
+----
+include::{sourceDir}/src/main/java/example/micronaut/AwsSesMailService.java[]
+----
+
+<1> Use `javax.inject.Singleton` to designate a class a a singleton
+<2> Bean will not loaded unless condition is met.
+<3> Bean will not loaded, if bean is not present.
+<4> `@Primary` is a qualifier that indicates that a bean is the primary bean that should be selected in the case of multiple possible interface implementations.
+<5> Values will be resolved from system properties.
+
+
+Add a test:
+
+[source,groovy]
+.src/test/groovy/example/micronaut/AwsSesMailServiceSpec.groovy
+----
+include::{sourceDir}/src/test/groovy/example/micronaut/AwsSesMailServiceSpec.groovy[]
+----

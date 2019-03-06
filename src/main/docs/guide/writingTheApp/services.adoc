@@ -1,0 +1,14 @@
+Create an interface - `EmailService`. Any email provider present in the application should implement it.
+
+[source,java]
+.src/java/main/example/micronaut/EmailService.java
+----
+include::{sourceDir}/src/main/java/example/micronaut/EmailService.java[]
+----
+
+[source,java]
+.src/java/main/example/micronaut/Email.java
+----
+include::{sourceDir}/src/main/java/example/micronaut/Email.java[]
+----
+

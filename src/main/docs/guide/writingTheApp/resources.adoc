@@ -1,0 +1,32 @@
+Add a logger to get more visibility:
+
+[source,xml]
+.src/main/resources/logback.xml
+----
+...
+..
+.
+include::{sourceDir}/src/main/resources/logback.xml[]
+----
+
+To use SendGrid, setup the required environment variables and run the app
+
+[source, bash]
+----
+$ export SENDGRID_FROM_EMAIL=email@email.com
+$ export SENDGRID_APIKEY=XXXXXX
+$ ./gradlew run
+----
+
+To use AWS SES, setup the required environment variables and run the app
+
+[source, bash]
+----
+$ export AWS_REGION=eu-west-1
+$ export AWS_SOURCE_EMAIL=email@email.com
+$ export AWS_ACCESS_KEY_ID=XXXXXXXX
+$ export AWS_SECRET_KEY=XXXXXXXX
+$ ./gradlew run
+----
+
+If you supply both AWS SES and SendGrid  system properties, the AWS SES `EmailService` implementation will be used due to the `@Primary` annotation.

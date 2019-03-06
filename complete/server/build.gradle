@@ -1,0 +1,94 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+    dependencies {
+        classpath "com.github.jengelman.gradle.plugins:shadow:2.0.4"
+        classpath "io.spring.gradle:dependency-management-plugin:1.0.5.RELEASE"
+        classpath "net.ltgt.gradle:gradle-apt-plugin:0.15"
+    }
+}
+
+version "0.1"
+group "example"
+
+apply plugin:"io.spring.dependency-management"
+apply plugin:"com.github.johnrengelman.shadow"
+apply plugin:"application"
+apply plugin:"groovy"
+apply plugin:"net.ltgt.apt-eclipse"
+apply plugin:"net.ltgt.apt-idea"
+
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven { url "https://jcenter.bintray.com" }
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "io.micronaut:micronaut-bom:$micronautVersion"
+    }
+}
+
+dependencies {
+    annotationProcessor "io.micronaut:micronaut-inject-java"
+    compile "io.micronaut:micronaut-http-client"
+    compile "io.micronaut:micronaut-http-server-netty"
+    compile "io.micronaut:micronaut-inject"
+    compile "io.micronaut:micronaut-runtime"
+    compileOnly "io.micronaut:micronaut-inject-java"
+    runtime "ch.qos.logback:logback-classic:1.2.3"
+    testCompile "junit:junit:4.12"
+    testCompile "io.micronaut:micronaut-inject-java"
+
+    //tag::awsses[]
+    compile 'com.amazonaws:aws-java-sdk-ses:1.11.285'
+    //end::awsses[]
+    //tag::sendgrid[]
+    compile 'com.sendgrid:sendgrid-java:4.1.2'
+    //end::sendgrid[]
+
+    //tag::hibernate-validator[]
+    compile "io.micronaut.configuration:micronaut-hibernate-validator"
+    //end::hibernate-validator[]
+
+    //tag::spock[]
+    testCompile "org.codehaus.groovy:groovy-all:2.4.15"
+    testCompile "org.spockframework:spock-core:1.1-groovy-2.4"
+    //end::spock[]
+
+    testCompile "io.micronaut:micronaut-inject-groovy"
+
+}
+
+shadowJar {
+    mergeServiceFiles()
+}
+
+run.jvmArgs('-noverify', '-XX:TieredStopAtLevel=1')
+
+mainClassName = "example.micronaut.Application"
+compileJava.options.compilerArgs += '-parameters'
+compileTestJava.options.compilerArgs += '-parameters'
+
+run {
+    systemProperty "sendgrid.apikey", System.getProperty('sendgrid.apikey')
+    systemProperty "sendgrid.fromemail", System.getProperty('sendgrid.fromemail')
+    systemProperty "aws.accesskeyid", System.getProperty("aws.accesskeyid")
+    systemProperty "aws.secretkey", System.getProperty("aws.secretkey")
+    systemProperty "aws.region", System.getProperty("aws.region")
+    systemProperty "aws.sourceemail", System.getProperty("aws.sourceemail")
+}
+
+test {
+    systemProperty "sendgrid.apikey", System.getProperty('sendgrid.apikey')
+    systemProperty "sendgrid.fromemail", System.getProperty('sendgrid.fromemail')
+    systemProperty "aws.accesskeyid", System.getProperty("aws.accesskeyid")
+    systemProperty "aws.secretkey", System.getProperty("aws.secretkey")
+    systemProperty "aws.region", System.getProperty("aws.region")
+    systemProperty "aws.sourceemail", System.getProperty("aws.sourceemail")
+}
