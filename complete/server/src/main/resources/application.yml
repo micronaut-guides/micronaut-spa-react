@@ -1,3 +1,11 @@
 micronaut:
     application:
         name: server
+---
+micronaut:
+    router:
+        static-resources:
+            default:
+                enabled: true
+                mapping: "/**"
+                paths: "classpath:public"
