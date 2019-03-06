@@ -3,6 +3,11 @@ micronaut:
         name: server
 ---
 micronaut:
+    server:
+        cors:
+            enabled: true
+---
+micronaut:
     router:
         static-resources:
             default:
