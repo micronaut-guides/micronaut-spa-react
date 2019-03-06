@@ -2,4 +2,4 @@ profile: service
 defaultPackage: example
 ---
 testFramework: spock
-sourceLanguage: groovy
+sourceLanguage: java
