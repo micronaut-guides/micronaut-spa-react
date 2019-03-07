@@ -36,3 +36,5 @@ INFO  io.micronaut.runtime.Micronaut - Startup completed in 1365ms. Server Runni
 ----
 
 Browse to `http://localhost:8080`, and you should see the React app. Enter a name into the form and click "Submit" - you should see the message returned from the server.
+
+image::reactmicronaut.gif[]
