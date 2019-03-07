@@ -13,3 +13,7 @@ task assembleServerAndClient(dependsOn: ['copyClientResources', ':server:shadowJ
     group = 'build'
     description = 'Build combined server & client JAR'
 }
+
+task test {
+    
+}
