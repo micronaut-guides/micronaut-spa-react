@@ -1,0 +1,20 @@
+Within the `client` directory, edit the file `src/App.js` as shown below:
+
+.client/src/App.js
+[source,javascript]
+----
+include::{sourceDir}/client/src/App.js[indent=0]
+----
+<1> Define some initial state
+<2> Method to update the `name` property
+<3> Method to make a request to the server to retrieve the "Hello" message
+<4> Form to accept the user's name
+<5> Conditionally display message from the server
+
+The `SERVER_URL` variable used in the above component needs to be defined in a configuration file. Create the file `config.js` within the `client/src` directory, and add the following content:
+
+[source,javascript]
+----
+include::{sourceDir}/client/src/config.js[indent=0]
+----
+<1> Use the current Node environment to determine which URL to use for server requests

@@ -1,0 +1,10 @@
+In order to serve the React single-page-app from the running Micronaut server, we need to configure the server to handle static resources. When the React app is built using `yarn build`, a set of HTML and JavaScript files are created that contain all of the resources needed to run the single-page-app.
+
+[source,yml]
+.server/src/main/resources/application.yml
+----
+include::{sourceDir}/server/src/main/resources/application.yml[indent=0, tag=staticResources]
+----
+<1> Enable serving of static resources
+<2> Specify the URI pattern that resources should served from
+<3> Specify the location from which static resources should be served

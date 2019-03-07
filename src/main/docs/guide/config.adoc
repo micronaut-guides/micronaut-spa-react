@@ -1,0 +1,8 @@
+In order for the React app to make requests to the Micronaut server, we need to enable CORS support in the Micronaut configuration. Add the following snippet to `application.yml:
+
+[source,yml]
+.server/src/main/resources/application.yml
+----
+include::{sourceDir}/server/src/main/resources/application.yml[indent=0, tag=cors]
+----
+

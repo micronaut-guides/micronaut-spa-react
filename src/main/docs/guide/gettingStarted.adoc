@@ -1,1 +1,1 @@
-In this guide we are going to create a Micronaut app written in Groovy.
+In this guide you will learn how to create a Single Page App (using React) together with a Micronaut backend, and (optionally) how to package both projects together as an executable JAR. We will be using the Gradle build tool due to its powerful multi-project support and (via plugins) Node.js integration.

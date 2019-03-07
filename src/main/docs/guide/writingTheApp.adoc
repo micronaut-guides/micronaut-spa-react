@@ -1,3 +1,31 @@
-include::{commondir}/common-create-app-java.adoc[]
+In the `initial` directory you should see a directory named `server`, containing a simple Micronaut application written in Java and using a Gradle build. The application includes a single controller, shown below:
 
-include::{commondir}/common-annotationprocessors.adoc[]
+.server/src/main/java/example/HelloController.java
+[source,java]
+----
+include::{sourceDir}/server/src/main/java/example/HelloController.java[indent=0]
+----
+
+You can run the Micronaut application with the Gradle wrapper:
+
+[source,bash]
+----
+~ cd server
+~ ./gradlew run
+----
+
+Exercise the controller with a simple GET request:
+
+[source,bash]
+----
+~ curl -X GET http://localhost:8080/Bob
+  Hello, Bob!
+----
+
+Additionally, there is a directory named `client` which contains a React single-page-app. The project was generated using `create-react-app`, and has no modifications. If you have `yarn` installed and a Node.js installation of `10.x` or above, you can run the app as shown below:
+
+[source,bash]
+----
+~ cd client
+~ yarn start
+----

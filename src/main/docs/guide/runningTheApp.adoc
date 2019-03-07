@@ -1,0 +1,38 @@
+The `server` application can be started from the top-level directory with the `server:start` task.
+
+.Running the Micronaut app
+[source, bash]
+----
+~ ./gradlew server:start
+----
+
+The `client` React app can be started either with `yarn start` or with the `client:start` task.
+
+.Running the React app
+[source, bash]
+----
+~ ./gradlew client:start
+----
+
+Browse to `http://localhost:3000`, and you should see the React app. Enter a name into the form and click "Submit" - you should see the message returned from the server.
+
+== Building an Executable JAR
+
+To generate the unified executable JAR, file, run the `assembleServerAndClient` task.
+
+[source, bash]
+----
+~ ./gradlew assembleServerAndClient
+----
+
+To run the application, use the `java -jar` command:
+
+[source, bash]
+----
+~ java -jar server/build/libs/server-0.1-all.jar
+
+...
+INFO  io.micronaut.runtime.Micronaut - Startup completed in 1365ms. Server Running: http://localhost:8080
+----
+
+Browse to `http://localhost:8080`, and you should see the React app. Enter a name into the form and click "Submit" - you should see the message returned from the server.

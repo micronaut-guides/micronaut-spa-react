@@ -5,13 +5,16 @@ import {SERVER_URL} from "./config";
 
 class App extends Component {
 
+  //<1>
   state = {
     name: 'World',
     message: null
   };
 
+  //<2>
   setName = e => this.setState({name: e.target.value});
 
+  //<3>
   getMessage = e => {
     e.preventDefault();
     fetch(`${SERVER_URL}/${this.state.name}`)
@@ -25,13 +28,14 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-
+          {/* <4> */}
           <form onSubmit={this.getMessage}>
             <label>Enter your name: </label>
             <input type="text" value={this.state.name} onChange={this.setName} />
             <input type="submit" value="Submit" />
           </form>
 
+          {/* <5> */}
           <p>
             { this.state.message ?
                 <strong>{this.state.message}</strong> :
