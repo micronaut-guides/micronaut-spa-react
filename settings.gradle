@@ -1,1 +1,4 @@
-include 'complete:server', 'complete:client'
+include 'complete:server'
+include 'complete:client'
+include 'initial:server'
+include 'initial:client'
