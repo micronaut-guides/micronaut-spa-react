@@ -1,9 +1,9 @@
 In the `initial` directory you should see a directory named `server`, containing a simple Micronaut application written in Java and using a Gradle build. The application includes a single controller, shown below:
 
-.server/src/main/java/example/HelloController.java
+.server/src/main/java/example/micronaut/HelloController.java
 [source,java]
 ----
-include::{sourceDir}/server/src/main/java/example/HelloController.java[indent=0]
+include::{sourceDir}/server/src/main/java/example/micronaut/HelloController.java[indent=0]
 ----
 
 You can run the Micronaut application with the Gradle wrapper:
