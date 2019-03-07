@@ -15,5 +15,9 @@ task assembleServerAndClient(dependsOn: ['copyClientResources', ':server:shadowJ
 }
 
 task test {
-    
+
+}
+
+task check {
+
 }
