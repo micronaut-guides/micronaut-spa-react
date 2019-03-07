@@ -1,9 +1,9 @@
-The `server` application can be started from the top-level directory with the `server:start` task.
+The `server` application can be started from the top-level directory with the `server:run` task.
 
 .Running the Micronaut app
 [source, bash]
 ----
-~ ./gradlew server:start
+~ ./gradlew server:run
 ----
 
 The `client` React app can be started either with `yarn start` or with the `client:start` task.
