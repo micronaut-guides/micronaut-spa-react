@@ -1,20 +1,20 @@
 micronaut:
-    application:
-        name: server
+  application:
+    name: server
+---
 #tag::cors[]
----
 micronaut:
-    server:
-        cors:
-            enabled: true
+  server:
+    cors:
+      enabled: true
 #end::cors[]
-#tag::staticResources[]
 ---
+#tag::staticResources[]
 micronaut:
-    router:
-        static-resources:
-            default:
-                enabled: true   #<1>
-                mapping: "/**"  #<2>
-                paths: "classpath:public" #<3>
+  router:
+    static-resources:
+      default:
+        enabled: true   #<1>
+        mapping: "/**"  #<2>
+        paths: "classpath:public" #<3>
 #end::staticResources[]
