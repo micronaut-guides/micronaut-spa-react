@@ -5,7 +5,7 @@ task copyClientResources(dependsOn: ':client:build') { //<1>
 copyClientResources.doFirst { //<2>
     copy {
         from project(':client').buildDir.absolutePath
-        into "${project(':server').buildDir}/resources/public"
+        into "${project(':server').buildDir}/resources/main/public"
     }
 }
 
