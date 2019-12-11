@@ -10,3 +10,5 @@ writingTheApp:
   staticResources: Static Resources
 runningTheApp:
   title: Running the Application
+help:
+  title: Help with Micronaut
