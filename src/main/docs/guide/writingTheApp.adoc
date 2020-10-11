@@ -27,5 +27,6 @@ Additionally, there is a directory named `client` which contains a React single-
 [source,bash]
 ----
 ~ cd client
+~ yarn install
 ~ yarn start
 ----
