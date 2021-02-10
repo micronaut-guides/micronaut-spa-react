@@ -1,0 +1,6 @@
+*/test/**/*.groovy -linguist-detectable
+*.bat -linguist-detectable
+*.js -linguist-detectable
+*.html -linguist-detectable
+*.css -linguist-detectable
+*.sh -linguist-detectable
